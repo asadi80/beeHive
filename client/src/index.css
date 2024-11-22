@@ -1,0 +1,33 @@
+html, body {
+  height: 100%;            /* Set height to 100% for html and body */
+  margin: 0;              /* Remove default margin */
+  padding: 0;             /* Remove default padding */
+  box-sizing: border-box; /* Ensure padding and border are included in total height and width */
+  background-color: #eee;
+}
+
+.center {
+  display: flex; /* Enables flexbox for responsive layout */
+  flex-direction: column; /* Allows vertical stacking */
+  justify-content: center; /* Centers content vertically */
+  align-items: center; /* Centers content horizontally */
+  min-height: 100vh; /* Makes sure it takes at least the full height of the viewport */
+}
+
+ul {
+  list-style-type: none;
+  
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.btn  {
+background-color: #E57373;
+}
+
+.map{
+  width: 100vw;
+  height: 100vh;
+}
