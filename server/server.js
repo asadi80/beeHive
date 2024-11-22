@@ -15,7 +15,7 @@ const subdomain = 'JAMDOMAIN';
 app.use(cors());
 app.options("*", cors());
 app.use(express.json());
-// app.use(express.static(path.join(__dirname, '../client/build'))); // Serve static files from React app
+app.use(express.static(path.join(__dirname, '../client/build'))); // Serve static files from React app
 
 // Authentication middleware
 app.use(auth());
@@ -31,7 +31,7 @@ app.use(errorHandler);
 // }
 
 app.get('*', (req, res) => {
-  res.json({ message: "Hello from the Node.js server!" });
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
 });
 
 // Connect to the database and start the server
