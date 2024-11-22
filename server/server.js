@@ -26,6 +26,8 @@ app.use(routes);
 // Error handling middleware should be last
 app.use(errorHandler);
 
+
+
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
 });
