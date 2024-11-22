@@ -15,7 +15,7 @@ const subdomain = 'JAMDOMAIN';
 app.use(cors());
 app.options("*", cors());
 app.use(express.json());
-// app.use(express.static(path.join(__dirname, '../client/build'))); // Serve static files from React app
+app.use(express.static(path.join(__dirname, '../client/build'))); // Serve static files from React app
 
 // Authentication middleware
 app.use(auth());
@@ -26,9 +26,9 @@ app.use(routes);
 // Error handling middleware should be last
 app.use(errorHandler);
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
-}
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static(path.join(__dirname, '../client/build')));
+// }
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
