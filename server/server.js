@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(auth());
 
 // API routes
-app.use(routes);
+app.use('/api', routes);  // Assuming your routes are under `/api`
 
 // Error handling middleware should be last
 app.use(errorHandler);
@@ -26,7 +26,7 @@ app.use(errorHandler);
 // Serve static React build files
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-// Catch-all route for React's client-side routing
+// Catch-all route for React's client-side routing (for single-page apps)
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
@@ -38,5 +38,5 @@ db.once('open', () => {
 
 // Export the app for serverless deployment (Vercel handler)
 module.exports = (req, res) => {
-  app(req, res);
+  app(req, res);  // Use Express to handle requests and responses
 };
