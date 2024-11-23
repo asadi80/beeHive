@@ -24,11 +24,11 @@ app.use(routes);
 app.use(errorHandler);
 
 // Serve static React build files
-app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 // Catch-all route for React's client-side routing
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
 
 // Connect to DB and run API
@@ -36,4 +36,7 @@ db.once('open', () => {
   console.log('Connected to DB');
 });
 
-module.exports = app;  // Export the app for Vercel
+// Export the app for serverless deployment (Vercel handler)
+module.exports = (req, res) => {
+  app(req, res);
+};
